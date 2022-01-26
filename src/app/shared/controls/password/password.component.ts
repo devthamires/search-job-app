@@ -1,35 +1,41 @@
 import {
   Component,
+  EventEmitter,
   forwardRef,
   Input,
   OnInit,
   Output,
-  EventEmitter,
 } from '@angular/core';
-import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+
+type PasswordType = 'password' | 'text';
+
 @Component({
-  selector: 'app-input',
-  templateUrl: './input.component.html',
-  styleUrls: ['./input.component.scss'],
+  selector: 'app-password',
+  templateUrl: './password.component.html',
+  styleUrls: ['./password.component.scss'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => InputComponent),
+      useExisting: forwardRef(() => PasswordComponent),
       multi: true,
     },
   ],
 })
-export class InputComponent implements ControlValueAccessor, OnInit {
-  @Input() placeholder: string;
-  @Output() changed = new EventEmitter<string>();
-
+export class PasswordComponent implements OnInit, ControlValueAccessor {
   value: string;
   isDisabled: boolean;
+  passwordType: PasswordType;
+
+  @Input() placeholder: string;
+  @Output() changed = new EventEmitter<string>();
 
   private propagateChange: any = () => {};
   private propagateTouched: any = () => {};
 
-  constructor() {}
+  constructor() {
+    this.passwordType = 'password';
+  }
 
   ngOnInit(): void {}
 
@@ -57,5 +63,9 @@ export class InputComponent implements ControlValueAccessor, OnInit {
 
   onBlur(): void {
     this.propagateTouched();
+  }
+
+  togglePassword(): void {
+    this.passwordType = this.passwordType === 'password' ? 'text' : 'password';
   }
 }
