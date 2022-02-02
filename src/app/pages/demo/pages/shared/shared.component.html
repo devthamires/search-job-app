@@ -24,6 +24,36 @@
   >
     <app-password formControlName="password"></app-password>
   </app-form-field>
+
+  <app-form-field
+    [control]="form.controls.select"
+    label="Select"
+    [required]="true"
+  >
+    <app-select formControlName="select" [items]="items"></app-select>
+  </app-form-field>
+
+  <app-form-field
+    [control]="form.controls.checkboxes"
+    label="Checkboxes"
+    [required]="true"
+  >
+    <app-checkboxes
+      formControlName="checkboxes"
+      [items]="items"
+    ></app-checkboxes>
+  </app-form-field>
+
+  <app-form-field
+    [control]="form.controls.radios"
+    label="Radios"
+    [required]="true"
+  >
+    <app-radios
+      formControlName="radios"
+      [items]="items"
+    ></app-radios>
+  </app-form-field>
 </form>
 
 <code>
