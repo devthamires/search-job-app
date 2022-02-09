@@ -68,6 +68,22 @@ export class SharedComponent implements OnInit {
           validators: [Validators.required],
         },
       ],
+      datepicker: [
+        null,
+        {
+          updateOn: 'change',
+          validators: [Validators.required],
+        },
+      ],
+      daterange: [
+        null,
+        {
+          updateOn: 'change',
+          validators: [Validators.required],
+        },
+      ],
+
+
     });
   }
 

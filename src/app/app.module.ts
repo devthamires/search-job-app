@@ -11,6 +11,25 @@ import { AppComponent } from './app.component';
 import { environment } from '@src/environments/environment';
 import { HeaderComponent } from './components/header/header.component';
 
+import {
+  MatNativeDateModule,
+  MatDateFormats,
+  MAT_DATE_FORMATS,
+  MAT_DATE_LOCALE,
+} from '@angular/material/core';
+
+const APP_DATE_FORMATS: MatDateFormats = {
+  parse: {
+    dateInput: { day: 'numeric', mouth: 'numeric', year: 'numeric' },
+  },
+  display: {
+    dateInput: { day: 'numeric', mouth: 'short', year: 'numeric' },
+    monthYearLabel: { mouth: 'short', year: 'numeric' },
+    dateA11yLabel: { mouth: 'long', year: 'numeric', day: 'numeric' },
+    monthYearA11yLabel: { mouth: 'long', year: 'numeric' },
+  },
+};
+
 @NgModule({
   declarations: [AppComponent, HeaderComponent],
   imports: [
@@ -21,8 +40,12 @@ import { HeaderComponent } from './components/header/header.component';
     AngularFirestoreModule,
     AngularFireAuthModule,
     AngularFireStorageModule,
+    MatNativeDateModule,
   ],
-  providers: [],
+  providers: [
+    { provide: MAT_DATE_LOCALE, useValue: 'pt-GB' },
+    { provide: MAT_DATE_FORMATS, useValue: APP_DATE_FORMATS },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

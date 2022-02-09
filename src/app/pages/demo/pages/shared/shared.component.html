@@ -49,10 +49,26 @@
     label="Radios"
     [required]="true"
   >
-    <app-radios
-      formControlName="radios"
-      [items]="items"
-    ></app-radios>
+    <app-radios formControlName="radios" [items]="items"></app-radios>
+  </app-form-field>
+
+  <app-form-field
+    [control]="form.controls.datepicker"
+    label="Date"
+    [required]="true"
+  >
+    <app-date formControlName="datepicker" placeholder="Date"></app-date>
+  </app-form-field>
+
+  <app-form-field
+    [control]="form.controls.daterange"
+    label="Date"
+    [required]="true"
+  >
+    <app-date-range
+      formControlName="daterange"
+      placeholder="Date"
+    ></app-date-range>
   </app-form-field>
 </form>
 
