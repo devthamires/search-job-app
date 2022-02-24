@@ -8,6 +8,7 @@ import { PasswordModule } from './password/password.module';
 import { SelectModule } from './select/select.module';
 import { DateModule } from './date/date.module';
 import { DateRangeModule } from './date-range/date-range.module';
+import { AutocompleteModule } from './autocomplete/autocomplete.module';
 
 @NgModule({
   declarations: [],
@@ -20,7 +21,8 @@ import { DateRangeModule } from './date-range/date-range.module';
     CheckboxesModule,
     RadiosModule,
     DateModule,
-    DateRangeModule
+    DateRangeModule,
+    AutocompleteModule,
   ],
   exports: [
     InputModule,
@@ -30,7 +32,8 @@ import { DateRangeModule } from './date-range/date-range.module';
     CheckboxesModule,
     RadiosModule,
     DateModule,
-    DateRangeModule
+    DateRangeModule,
+    AutocompleteModule,
   ],
 })
 export class ControlsModule {}

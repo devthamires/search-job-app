@@ -1,77 +1,97 @@
+<h2>Actions</h2>
+<app-button (click)="onToggleSpinner()">Toggle Spinner</app-button>
+<app-button (click)="onError()">Error</app-button>
+<app-button (click)="onSucess()">Success</app-button>
+
 <h2>Form</h2>
-
-<form [formGroup]="form" novalidate autocomplete="off" (ngSubmit)="onSubmit()">
-  <app-button (click)="onPatchValue()">Patch Value</app-button>
-  <app-button (click)="onToggleInline()">Toggle Inline</app-button>
-  <br /><br /><br />
-
-  <app-form-field
-    [control]="form.controls.input"
-    label="Input"
-    [isInline]="isInline"
-    [required]="true"
-    [patternError]="regexErrors.email"
+<div class="wrapper">
+  <app-spinner *ngIf="showSpinner"></app-spinner>
+  <form
+    [formGroup]="form"
+    novalidate
+    autocomplete="off"
+    (ngSubmit)="onSubmit()"
   >
-    <app-input formControlName="input"></app-input>
-  </app-form-field>
+    <app-button type="submit">Submit</app-button>
+    <app-button (click)="onPatchValue()">Patch Value</app-button>
+    <app-button (click)="onToggleInline()">Toggle Inline</app-button>
+    <app-button (click)="onToggleDisabled()">Toggle Disabled</app-button>
+    <br /><br /><br />
 
-  <app-form-field
-    [control]="form.controls.password"
-    [isInline]="isInline"
-    label="Password"
-    [required]="true"
-    [patternError]="regexErrors.password"
-  >
-    <app-password formControlName="password"></app-password>
-  </app-form-field>
+    <app-form-field
+      [control]="form.controls.input"
+      label="Input"
+      [isInline]="isInline"
+      [required]="true"
+      [patternError]="regexErrors.email"
+    >
+      <app-input formControlName="input"></app-input>
+    </app-form-field>
 
-  <app-form-field
-    [control]="form.controls.select"
-    label="Select"
-    [required]="true"
-  >
-    <app-select formControlName="select" [items]="items"></app-select>
-  </app-form-field>
+    <app-form-field
+      [control]="form.controls.password"
+      [isInline]="isInline"
+      label="Password"
+      [required]="true"
+      [patternError]="regexErrors.password"
+    >
+      <app-password formControlName="password"></app-password>
+    </app-form-field>
 
-  <app-form-field
-    [control]="form.controls.checkboxes"
-    label="Checkboxes"
-    [required]="true"
-  >
-    <app-checkboxes
-      formControlName="checkboxes"
-      [items]="items"
-    ></app-checkboxes>
-  </app-form-field>
+    <app-form-field
+      [control]="form.controls.select"
+      label="Select"
+      [required]="true"
+    >
+      <app-select formControlName="select" [items]="items"></app-select>
+    </app-form-field>
 
-  <app-form-field
-    [control]="form.controls.radios"
-    label="Radios"
-    [required]="true"
-  >
-    <app-radios formControlName="radios" [items]="items"></app-radios>
-  </app-form-field>
+    <app-form-field
+      [control]="form.controls.checkboxes"
+      label="Checkboxes"
+      [required]="true"
+    >
+      <app-checkboxes
+        formControlName="checkboxes"
+        [items]="items"
+      ></app-checkboxes>
+    </app-form-field>
 
-  <app-form-field
-    [control]="form.controls.datepicker"
-    label="Date"
-    [required]="true"
-  >
-    <app-date formControlName="datepicker" placeholder="Date"></app-date>
-  </app-form-field>
+    <app-form-field
+      [control]="form.controls.radios"
+      label="Radios"
+      [required]="true"
+    >
+      <app-radios formControlName="radios" [items]="items"></app-radios>
+    </app-form-field>
 
-  <app-form-field
-    [control]="form.controls.daterange"
-    label="Date"
-    [required]="true"
-  >
-    <app-date-range
-      formControlName="daterange"
-      placeholder="Date"
-    ></app-date-range>
-  </app-form-field>
-</form>
+    <app-form-field
+      [control]="form.controls.datepicker"
+      label="Date"
+      [required]="true"
+    >
+      <app-date formControlName="datepicker" placeholder="Date"></app-date>
+    </app-form-field>
 
+    <app-form-field
+      [control]="form.controls.daterange"
+      label="Date"
+      [required]="true"
+    >
+      <app-date-range
+        formControlName="daterange"
+        placeholder="Date"
+      ></app-date-range>
+    </app-form-field>
+
+    <app-form-field [control]="form.controls.autocomplete" label="Autocomplete">
+      <app-autocomplete
+        formControlName="autocomplete"
+        [items]="items"
+      ></app-autocomplete>
+    </app-form-field>
+  </form>
+</div>
 <code>
   {{ form.value | json }}
 </code>
