@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-root',
@@ -9,14 +8,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 export class AppComponent implements OnInit {
   title = 'search-job';
 
-  constructor(private afs: AngularFirestore) {}
+  constructor() {}
 
-  ngOnInit() {
-    this.afs
-      .collection('test')
-      .snapshotChanges()
-      .subscribe((items) => {
-        console.log(items);
-      });
-  }
+  ngOnInit() {}
 }
