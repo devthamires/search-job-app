@@ -1,7 +1,7 @@
 import { Icon } from '../icon';
 
-export type TItem = {
+export interface Item {
   id: string;
   name: string;
   icon: Icon;
-};
+}
